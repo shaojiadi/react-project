@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      //构造器方法
+      constructor(name,age){
+        //构造器中的this指向的是类的实例对象
+        this.name = name;
+        this.age = age;
+      }
+      speak(){
+        //speak方法在类的原型对象上，供实例使用
+        //speak中的this就是Person实例
+        console.log(`${this.name},${this.age}`);
+      }
+    }
+
+    class Student extends Person {
+      constructor(name,age,grade){
+        super(name,age)    //必须在第一行
+        this.grade = grade
+      }
+      //重写speak方法
+      speak(){
+        //....
+      }
+    }
+
+    //创建一个Person的实例对象
+    const p1 = new Person('tom',19)
+    const p2 = new Person('jerry',20)
+    const s1 = new Student('小明',10,'高一')
+
+    console.log(p1);
+    console.log(p2);
+    console.log(s1.name);
+    p1.speak()
+    p2.speak()
+    s1.speak()
+  </script>
+</body>
+</html>
