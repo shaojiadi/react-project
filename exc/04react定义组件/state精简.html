@@ -20,7 +20,7 @@
   <script type="text/javascript" src="../js/babel.min.js"></script>
   <script type="text/babel">  
       class Weather extends React.Component {
-        state = {isHot:false,wind:'风女'}
+        state = {isHot:false,wind:'风女'}     //给Weather实例添加state属性
         render(){
           const {isHot,wind} = this.state
            return <h1 onClick={this.changeWeather}>今天天气很{isHot?'炎热':'凉快'}，{wind}</h1> 
