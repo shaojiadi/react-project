@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="demo"></div>
+  <div id="demo2"></div>
+  <div id="test"></div>
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 用于支持react操作dom -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel，将jsx转为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <!-- 引入prop-types，用于对组件标签属性进行限制 -->
+  <script type="text/javascript" src="../js/prop-types.js"></script>
+  <script type="text/babel">  
+    class Demo extends React.Component {
+      showData = ()=>{
+        alert(this.input1.value);
+      }
+      shhowData2 = ()=>{
+        alert(this.input2.value);
+      }
+      render(){
+        return (
+          <div>
+            <input ref={(currentNode)=>{this.input1 = currentNode}} type="text" placeholder="点击按钮提示"/>&nbsp;         
+            <button onClick={this.showData}>点我提示左侧数据</button>&nbsp;
+            <input ref={c => this.input2 = c} onBlur={this.shhowData2} type="text" placeholder="失去焦点提示数据"/>
+          </div>
+          // ref={c => this.input2 = c}    react绑定调用ref的回调函数，将input2挂载到组件实例
+        )
+      }
+    }
+
+    ReactDOM.render(<Demo/>,document.getElementById('demo'))
+  </script>
+</body>
+</html>

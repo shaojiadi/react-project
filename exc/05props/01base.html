@@ -52,7 +52,7 @@
     ReactDOM.render(<Person name="小明" speak={speak} />,document.getElementById('demo2'))
 
     const p = {name: '老刘',age:18,sex:'女'}
-    ReactDOM.render(<Person {...p} />,document.getElementById('test'))   //{...p}这里的{}指的是语法，因为react+babel可以使用扩展运算符，但只限标签内
+    ReactDOM.render(<Person {...p} />,document.getElementById('test'))   //{...p}这里的{}指的是语法，因为react+babel可以使用扩展运算符，但只限标签内,相当于标签属性
   </script>
 </body>
 </html>
