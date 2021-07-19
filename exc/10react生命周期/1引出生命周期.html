@@ -28,7 +28,7 @@
         ReactDOM.unmountComponentAtNode(document.getElementById('demo'))
       }
 
-      //组件挂载完毕,只执行一次
+      //组件挂载完毕,只执行一次   常用，做初始化的事
       componentDidMount(){
         this.timer = setInterval(()=>{
           //获取原状态
@@ -38,8 +38,8 @@
         },200)
       }
 
-      //组件将要卸载
-      componentWillUnmount(){
+      //组件将要卸载  常用，一般做一些收尾的工作，如关闭定时器，取消订阅消息
+      componentWillUnmount(){            
         //清除定时器
         clearInterval(this.timer)
       }

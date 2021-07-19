@@ -8,13 +8,13 @@
 </head>
 <body>
   <div id="demo"></div>
-  <script type="text/javascript" src="../js/react.development.js"></script>
+  <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
   <!-- 用于支持react操作dom -->
-  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
   <!-- 引入babel，将jsx转为js -->
-  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
   <!-- 引入prop-types，用于对组件标签属性进行限制 -->
-  <script type="text/javascript" src="../js/prop-types.js"></script>
+  <script type="text/javascript" src="../js/17.0.1/prop-types.js"></script>
   <script type="text/babel">  
     class Count extends React.Component {
       //构造器
@@ -40,10 +40,12 @@
         this.forceUpdate()
       }
 
-      //组件将要挂载钩子
-      componentWillMount(){
-        console.log('count-componentWillMount');
-      }
+
+      // static getDerivedStateFromProps(props){ //让state始终取决于props,很少用
+      //   console.log('getDerivedStateFromProps',props);
+      //   // return null;      //返回一个null或者一个state状态对象
+      //   return props          
+      // }
 
        //组件挂载完毕,只执行一次
        componentDidMount(){
@@ -61,10 +63,7 @@
         return true;
       }
 
-      //组件将要更新的钩子
-      componentWillUpdate(){
-        console.log('count-componentWillUpdate');
-      }
+  
 
       //组件更新完毕的钩子
       componentDidUpdate(){
@@ -85,37 +84,8 @@
         )
       }
     }
-    
-    //父组件
-    class A extends React.Component {
-      state = {carname: 'bz'}
-      changeCar = ()=>{
-        this.setState({carname:'auto'})
-      }
-      render(){
-        return (
-          <div>
-            <div>A</div>
-            <button onClick={this.changeCar}>换车</button>
-            <B carName={this.state.carname}/>
-          </div>
-        )
-      }
-    }
-    //子组件
-    class B extends React.Component {
-      //组件将要接受新的props的钩子
-      componentWillReceiveProps(props){
-        console.log('B-componentWillReceiveProps',props);
-      }
-      render(){
-        return (
-          <div>B,接收到的车是：{this.props.carName}</div>
-        )
-      }
-    }
-    // ReactDOM.render(<Count/>,document.getElementById('demo'))
-    ReactDOM.render(<A/>,document.getElementById('demo'))
+  
+    ReactDOM.render(<Count  count={199} />,document.getElementById('demo'))
   </script>
 </body>
 </html>
