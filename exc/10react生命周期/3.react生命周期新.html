@@ -41,11 +41,11 @@
       }
 
 
-      // static getDerivedStateFromProps(props){ //让state始终取决于props,很少用
-      //   console.log('getDerivedStateFromProps',props);
-      //   // return null;      //返回一个null或者一个state状态对象
-      //   return props          
-      // }
+      static getDerivedStateFromProps(props,state){ //若state的值在任何时候都取决于props,可以使用
+        console.log('getDerivedStateFromProps',props,state);
+        return null;      //返回一个null或者一个state状态对象
+        // return props          
+      }
 
        //组件挂载完毕,只执行一次
        componentDidMount(){
@@ -62,12 +62,17 @@
         console.log('Count-shouldComponentUpdate');
         return true;
       }
-
+      
+      //更新之前获取快照
+      getSnapshotBeforeUpdate(){
+        console.log('getSnapshotBeforeUpdate');
+        return null;
+      }
   
 
       //组件更新完毕的钩子
-      componentDidUpdate(){
-        console.log('count-componentDidUpdate');
+      componentDidUpdate(prevProps,prevState){  //之前的props,之前的state
+        console.log('count-componentDidUpdate',a,b);
       }
 
 
