@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './index.css'
-import PubSub from 'pubsub-js'
 
 export default class index extends Component {
   search = ()=>{
@@ -9,11 +8,11 @@ export default class index extends Component {
     const {keyWordElement:{value:keyword}} = this;     //解构赋值连续使用并且重命名
     //console.log(keyword);
     //发送请求前通知App更新状态
-    PubSub.publish('sjd', {isLoding:true,isFirst:false});   //发布
+    this.props.updateAppState({isFirst:false,isLoding:true})
     axios.get(`/api1/search/users?q=${keyword}`).then(res=>{             //服务在react全家桶资料/05_所需服务器
-      PubSub.publish('sjd', {isLoding:false,users:res.data.items});  
+      this.props.updateAppState({isLoding:false,users:res.data.items})
     }).catch(err=>{
-      PubSub.publish('sjd', {isLoding:false,err:err.message});  
+      this.props.updateAppState({isLoding:false,err:err.message})
     })
   }
 
