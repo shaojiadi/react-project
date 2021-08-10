@@ -5,8 +5,7 @@ import Header from './components/Header'  //一般组件
 import MyNavLink from './components/MyNavLink'  
 import Test from './Pages/Test'  
 import './App.css'
-import {Route,Switch,Redirect} from 'react-router-dom'
-// Switch匹配到路径就不会继续使用
+import {Route,Switch} from 'react-router-dom'
 
 export default class App extends Component {
   render() {
@@ -23,21 +22,17 @@ export default class App extends Component {
               {/* 标签体内容也是一个特殊的标签属性，通过this.props.children可以获取标签体内容 
                 <NavLink to="/about"  children="About"/>  == <Navlink to="/about">About</Navlink>
               */}
-              <MyNavLink to="/home">Home</MyNavLink>    
+              <MyNavLink to="/home">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
-                {/* 注册路由  路由组件才有history*/}
+                {/* 注册路由 */}
                 <Switch>
                   <Route path="/about" component={About} data={8}/>
-                  {/* http://localhost:3000/css/bootstrap.css   默认公共目录是public */}
-                  <Route path="/home" component={Home}/>
-                  {/* 路由默认模糊匹配  exact开启精准匹配，一般不开启*/}
-                  <Route path="/home" component={Test} exact={true}/>
-                  <Redirect to="/about"/>
-                  {/* 重定向，当所有路由都无法匹配时，跳转到redirect指向的路由 */}
+                  <Route path="/Home" component={Home}/>
+                  <Route path="/Home" component={Test}/>
                 </Switch>
               </div>
             </div>
